@@ -20,6 +20,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Clear Yarn cache
+        run: yarn cache clean
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -53,6 +56,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Clear Yarn cache
+        run: yarn cache clean
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
@@ -67,6 +73,9 @@ jobs:
 
       - name: Setup
         uses: ./.github/actions/setup
+
+      - name: Clear Yarn cache
+        run: yarn cache clean
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
