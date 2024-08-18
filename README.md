@@ -34,20 +34,16 @@ const platformSize = resPlatformSize(30, 40); // Adjusts size based on the platf
 
 ## Functions
 
-```
+
 resPx(value: number): number
-// Adjusts pixel sizes according to the device's screen ratio. Returns an integer value.
-```
+Adjusts pixel sizes according to the device's screen ratio. Returns an integer value.
 
-```
 resText(pixels: number): number
-// Adjusts text sizes based on the screen width and platform. Returns an integer value.
-```
+Adjusts text sizes based on the screen width and platform. Returns an integer value.
 
-```
 resPlatformSize(iosSize: number, androidSize: number): number \n
-// Returns the size adjusted for the current platform (iOS or Android). Returns an integer value.
-```
+Returns the size adjusted for the current platform (iOS or Android). Returns an integer value.
+
 
 ## Contributing
 
