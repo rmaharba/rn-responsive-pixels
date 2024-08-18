@@ -2,7 +2,6 @@
 
 ---
 ### Note ⚠️: This library is still under construction and testing. Some features may be incomplete or subject to change. Please use with caution and provide feedback if you encounter any issues.
----
 
 A React Native library for adaptive pixel scaling, ensuring consistent UI elements across all screen sizes and densities.
 
