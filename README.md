@@ -16,7 +16,7 @@ npm install react-native-responsive-pixels
 
 ## Usage
 
-### Import the utility functions from the library and use them to adjust pixel and text sizes based on the device's screen dimensions:
+Import the utility functions from the library and use them to adjust pixel and text sizes based on the device's screen dimensions:
 
 
 ```js
