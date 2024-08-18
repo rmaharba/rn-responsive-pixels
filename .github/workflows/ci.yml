@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Install dependencies
-        run: yarn install --immutable 
+        run: yarn install --immutable
 
       - name: Lint files
         run: yarn lint
