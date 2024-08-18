@@ -8,8 +8,8 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version-file: .nvmrc
-         cache: 'yarn'
-          yarn-version: '3.6.4'
+        cache: 'yarn'
+        yarn-version: '3.6.4'
 
     - name: Cache dependencies
       id: yarn-cache
