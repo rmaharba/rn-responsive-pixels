@@ -83,6 +83,7 @@
     "typescript": "5.5.4"
   },
   "resolutions": {
+    "typescript": "5.5.4",
     "@types/react": "18.2.44"
   },
   "peerDependencies": {
