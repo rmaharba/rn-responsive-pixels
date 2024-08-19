@@ -80,10 +80,10 @@
     "react-native": "0.74.5",
     "react-native-builder-bob": "0.30.0",
     "release-it": "15.0.0",
-    "typescript": "5.2.2"
+    "typescript": "5.5.3"
   },
   "resolutions": {
-    "typescript": "5.2.2",
+    "typescript": "5.5.3",
     "@types/react": "18.2.44"
   },
   "peerDependencies": {
