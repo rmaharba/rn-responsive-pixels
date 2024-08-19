@@ -1,6 +1,6 @@
 {
   "name": "rn-responsive-pixels",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1-beta.3",
   "description": "A React Native library for adaptive pixel scaling.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -18,7 +18,6 @@
     }
   },
   "files": [
-    "src",
     "lib",
     "android",
     "ios",
