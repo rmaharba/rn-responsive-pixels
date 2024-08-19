@@ -1,4 +1,4 @@
-# react-native-responsive-pixels
+# rn-responsive-pixels
 
 Note ⚠️: This library is still under construction and testing. Some features may be incomplete or subject to change. Please use with caution and provide feedback if you encounter any issues.
 
@@ -7,11 +7,11 @@ A React Native library for adaptive pixel scaling, ensuring consistent UI elemen
 ## Installation
 
 ```sh
-yarn add react-native-responsive-pixels
+yarn add rn-responsive-pixels
 ```
 
 ```sh
-npm install react-native-responsive-pixels
+npm install rn-responsive-pixels
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ Import the utility functions from the library and use them to adjust pixel and t
 
 
 ```js
-import { resPx, resText, resPlatformSize } from 'react-native-responsive-pixels';
+import { resPx, resText, resPlatformSize } from 'rn-responsive-pixels';
 
 // Example usage for pixel sizes
 const adjustedPixelSize = resPx(10); // Adjusts pixel size based on device's screen ratio
@@ -51,6 +51,20 @@ Returns the size adjusted for the current platform (iOS or Android). Returns an 
 ```js
 resPlatformSize(iosSize: number, androidSize: number): number
 ```
+
+## Supported Platforms
+
+|----------|-----------|
+| Platform | Supported |
+|----------|-----------|
+| iOS      | ✅        |
+| Android  | ✅        |
+| Web      | ❌        |
+| Windows  | ❌        |
+| macOS    | ❌        |
+|----------|-----------|
+
+I'm still testing on Android/iOS, in the future I have plants to support more platforms.
 
 
 ## Contributing

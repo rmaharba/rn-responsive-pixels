@@ -39,19 +39,43 @@ const scaleFactor = 1.0;
 // Calculate the final ratio considering the scale factor
 const ratio = adjustedRatio * scaleFactor;
 
-const responsivePixels = (value: number): number => {
-  if (isNaN(value) || value < 0) {
-    console.warn('Invalid pixel value provided. Returning default value.');
-    return 0;
+/**
+ * Validates that the platform is either iOS or Android.
+ * @returns {boolean} True if the platform is supported, false otherwise.
+ */
+const isPlatformSupported = (): boolean => {
+  const supported = Platform.OS === 'ios' || Platform.OS === 'android';
+  if (!supported) {
+    console.warn(
+      `Platform ${Platform.OS} is not supported. Returning the original value.`
+    );
   }
+  return supported;
+};
+
+/**
+ * Validates the input value for pixel or text size.
+ * @param {number} value - The value to validate.
+ * @returns {boolean} True if the value is valid, false otherwise.
+ */
+const isValidValue = (value: number): boolean => {
+  const valid = !isNaN(value) && value >= 0;
+  if (!valid) {
+    console.warn('Invalid value provided. Returning default value.');
+  }
+  return valid;
+};
+
+const responsivePixels = (value: number): number => {
+  if (!isPlatformSupported()) return value;
+  if (!isValidValue(value)) return 0;
+
   return Math.round(value * ratio);
 };
 
 const textResponsive = (pixels: number): number => {
-  if (isNaN(pixels) || pixels < 0) {
-    console.warn('Invalid text size provided. Returning default value.');
-    return 0;
-  }
+  if (!isPlatformSupported()) return pixels;
+  if (!isValidValue(pixels)) return 0;
 
   const scaleWithWidth = windowScreenWidth / referenceWidth; // Base size for text
   const size = pixels * scaleWithWidth;
@@ -63,10 +87,9 @@ const textResponsive = (pixels: number): number => {
 };
 
 const getSizeForPlatform = (iosSize: number, androidSize: number): number => {
-  if (isNaN(iosSize) || iosSize < 0 || isNaN(androidSize) || androidSize < 0) {
-    console.warn('Invalid size values provided. Returning default value.');
-    return 0;
-  }
+  if (!isPlatformSupported()) return iosSize;
+  if (!isValidValue(iosSize) || !isValidValue(androidSize)) return 0;
+
   return responsivePixels(Platform.OS === 'ios' ? iosSize : androidSize);
 };
 

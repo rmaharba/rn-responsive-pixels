@@ -1,7 +1,7 @@
 {
-  "name": "react-native-responsive-pixels",
-  "version": "0.1.0",
-  "description": "A React Native library for adaptive pixel scaling, ensuring consistent UI elements across all screen sizes and densities.",
+  "name": "rn-responsive-pixels",
+  "version": "0.0.1-beta.0",
+  "description": "A React Native library for adaptive pixel scaling.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -51,14 +51,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rmaharba/react-native-responsive-pixels.git"
+    "url": "git+https://github.com/rmaharba/rn-responsive-pixels.git"
   },
   "author": "Abraham Rosa V. <abrahamarv@hotmail.es> (https://github.com/rmaharba)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rmaharba/react-native-responsive-pixels/issues"
+    "url": "https://github.com/rmaharba/rn-responsive-pixels/issues"
   },
-  "homepage": "https://github.com/rmaharba/react-native-responsive-pixels#readme",
+  "homepage": "https://github.com/rmaharba/rn-responsive-pixels#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
