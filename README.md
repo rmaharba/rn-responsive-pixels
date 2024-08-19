@@ -54,7 +54,6 @@ resPlatformSize(iosSize: number, androidSize: number): number
 
 ## Supported Platforms
 
-|----------|-----------|
 | Platform | Supported |
 |----------|-----------|
 | iOS      | ✅        |
@@ -62,7 +61,6 @@ resPlatformSize(iosSize: number, androidSize: number): number
 | Web      | ❌        |
 | Windows  | ❌        |
 | macOS    | ❌        |
-|----------|-----------|
 
 I'm still testing on Android/iOS, in the future I have plants to support more platforms.
 
