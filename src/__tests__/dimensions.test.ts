@@ -1,5 +1,5 @@
 import { Dimensions, Platform } from 'react-native';
-import { resPx, resText, resPlatformSize } from '../dimensions';
+import { resPx, resText, resPlatformSize } from '../';
 
 const mockDimensions = {
   width: 375,
