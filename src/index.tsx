@@ -73,17 +73,16 @@ const responsivePixels = (value: number): number => {
   return Math.round(value * ratio);
 };
 
-const textResponsive = (pixels: number): number => {
-  if (!isPlatformSupported()) return pixels;
-  if (!isValidValue(pixels)) return 0;
+const textResponsive = (value: number): number => {
+  if (!isPlatformSupported()) return value;
+  if (!isValidValue(value)) return 0;
 
   const scaleWithWidth = windowScreenWidth / referenceWidth; // Base size for text
-  const size = pixels * scaleWithWidth;
+  const size = value * scaleWithWidth;
 
-  const adjustedSize = PixelRatio.roundToNearestPixel(size);
-  const adjustment = Platform.OS === 'ios' ? -3 : 0; // Platform adjustment for iOS
+  const adjustedSize = PixelRatio.roundToNearestPixel(size) - 3;
 
-  return Math.round(adjustedSize + adjustment);
+  return Math.round(adjustedSize);
 };
 
 const getSizeForPlatform = (iosSize: number, androidSize: number): number => {
@@ -104,7 +103,7 @@ export const resPx = responsivePixels;
 /**
  * Adjusts text sizes according to the device's screen width and platform.
  *
- * @param pixels - The base text size in pixels.
+ * @param value - The base text size in pixels.
  * @returns The adjusted text size for the current device's screen, considering platform-specific adjustments.
  */
 export const resText = textResponsive;
