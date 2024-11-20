@@ -9,40 +9,49 @@ const mockDimensions = {
 };
 
 describe('Responsive utility functions', () => {
+  let consoleWarnSpy: jest.SpyInstance;
+
   beforeAll(() => {
     // Mock Dimensions to return fixed values
     Dimensions.get = jest.fn(() => mockDimensions);
+    // Mock console.warn to suppress warnings during tests
+    consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
-  it('should return an integer value for pixel sizes', () => {
+  afterAll(() => {
+    jest.restoreAllMocks();
+    consoleWarnSpy.mockRestore();
+  });
+
+  it('should return a numeric value for pixel sizes', () => {
     const value = 10;
     const result = resPx(value);
 
-    expect(Number.isInteger(result)).toBe(true);
+    expect(typeof result).toBe('number');
     expect(result).toBeGreaterThanOrEqual(0);
   });
 
-  it('should return an integer value for text sizes', () => {
+  it('should return a numeric value for text sizes', () => {
     const pixels = 20;
     const result = resText(pixels);
 
-    expect(Number.isInteger(result)).toBe(true);
+    expect(typeof result).toBe('number');
     expect(result).toBeGreaterThanOrEqual(0);
   });
 
-  it('should return an integer value for platform-specific size', () => {
+  it('should return a numeric value for platform-specific size', () => {
     Platform.OS = 'ios';
     const iosSize = 30;
     const androidSize = 40;
     const resultIos = resPlatformSize(iosSize, androidSize);
 
-    expect(Number.isInteger(resultIos)).toBe(true);
+    expect(typeof resultIos).toBe('number');
     expect(resultIos).toBeGreaterThanOrEqual(0);
 
     Platform.OS = 'android';
     const resultAndroid = resPlatformSize(iosSize, androidSize);
 
-    expect(Number.isInteger(resultAndroid)).toBe(true);
+    expect(typeof resultAndroid).toBe('number');
     expect(resultAndroid).toBeGreaterThanOrEqual(0);
   });
 
@@ -53,9 +62,5 @@ describe('Responsive utility functions', () => {
     expect(resText(-20)).toBe(0);
     expect(resPlatformSize(NaN, -30)).toBe(0);
     expect(resPlatformSize(-10, NaN)).toBe(0);
-  });
-
-  afterAll(() => {
-    jest.restoreAllMocks();
   });
 });

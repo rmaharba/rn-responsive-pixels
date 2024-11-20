@@ -1,8 +1,7 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
 
 const windowDimensions = Dimensions.get('window');
-const { height: windowScreenHeight, width: windowScreenWidth } =
-  windowDimensions;
+const { height: windowScreenHeight, width: windowScreenWidth } = windowDimensions;
 
 // Reference dimensions for a variety of devices
 const referenceDimensions = [
@@ -33,7 +32,6 @@ const aspectRatioHeight = windowScreenHeight / referenceHeight;
 const adjustedRatio = Math.min(aspectRatioWidth, aspectRatioHeight) * minRatio;
 
 // Optional scale factor (adjustable as needed)
-// This can be used to further adjust the final ratio
 const scaleFactor = 1.0;
 
 // Calculate the final ratio considering the scale factor
@@ -66,28 +64,48 @@ const isValidValue = (value: number): boolean => {
   return valid;
 };
 
-const responsivePixels = (value: number): number => {
-  if (!isPlatformSupported()) return value;
-  if (!isValidValue(value)) return 0;
+/**
+ * Calculates a moderate scaling value.
+ * @param {number} value - The original value to scale.
+ * @param {number} factor - The scaling factor (default is 0.5 for moderate scaling).
+ * @returns {number} The scaled value.
+ */
+const moderateScale = (value: number, factor: number = 0.5): number => {
+  return value + (Math.round(value * ratio) - value) * factor;
+};
 
-  return Math.round(value * ratio);
+const responsivePixels = (value: number): number => {
+  if (!isPlatformSupported()) {
+    return value;
+  }
+  if (!isValidValue(value)) {
+    return 0;
+  }
+
+  return moderateScale(value);
 };
 
 const textResponsive = (value: number): number => {
-  if (!isPlatformSupported()) return value;
-  if (!isValidValue(value)) return 0;
+  if (!isPlatformSupported()) {
+    return value;
+  }
+  if (!isValidValue(value)) {
+    return 0;
+  }
 
   const scaleWithWidth = windowScreenWidth / referenceWidth; // Base size for text
   const size = value * scaleWithWidth;
 
-  const adjustedSize = PixelRatio.roundToNearestPixel(size) - 3;
-
-  return Math.round(adjustedSize);
+  return PixelRatio.roundToNearestPixel(size);
 };
 
 const getSizeForPlatform = (iosSize: number, androidSize: number): number => {
-  if (!isPlatformSupported()) return iosSize;
-  if (!isValidValue(iosSize) || !isValidValue(androidSize)) return 0;
+  if (!isPlatformSupported()) {
+    return iosSize;
+  }
+  if (!isValidValue(iosSize) || !isValidValue(androidSize)) {
+    return 0;
+  }
 
   return responsivePixels(Platform.OS === 'ios' ? iosSize : androidSize);
 };
